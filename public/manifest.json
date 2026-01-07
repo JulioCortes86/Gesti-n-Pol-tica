@@ -1,0 +1,17 @@
+{
+    "name": "Gestión Política - Daniel Rico",
+    "short_name": "Gestión Política",
+    "description": "Aplicación de gestión y seguimiento de votantes.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f0f2f5",
+    "theme_color": "#1a4fbd",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "192x192 512x512",
+            "type": "image/png"
+        }
+    ]
+}
