@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, Edit2, Trash2 } from 'lucide-react';
+import { Download, Edit2, Trash2, Phone } from 'lucide-react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import { exportToExcel, exportToPDF } from '../utils/exports';
 
@@ -12,12 +12,18 @@ function ReportsSection({ voters, leader, goal, setGoal, onEdit, onDelete }) {
         alert('¡Meta actualizada!');
     };
 
+    const handleCall = (voter) => {
+        if (window.confirm(`¿Deseas llamar a ${voter.name}?`)) {
+            window.location.href = `tel:${voter.phone}`;
+        }
+    };
+
     const getMessage = () => {
         if (registeredCount >= goal * 1.5) return "¡Has superado la meta! ¡Excelente trabajo!";
         if (registeredCount >= goal) return "¡Lo lograste! ¡Felicidades!";
         if (registeredCount >= goal * 0.5) return "¡Ya casi lo logras!";
         return "¡Esfuérzate más!";
-    };
+    }
 
     return (
         <div>
@@ -103,6 +109,14 @@ function ReportsSection({ voters, leader, goal, setGoal, onEdit, onDelete }) {
                                 <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>C.C. {v.id} | {v.phone}</p>
                             </div>
                             <div style={{ display: 'flex', gap: '8px' }}>
+                                <button
+                                    onClick={() => handleCall(v)}
+                                    className="btn-icon"
+                                    style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--success)' }}
+                                    title="Llamar"
+                                >
+                                    <Phone size={20} />
+                                </button>
                                 <button
                                     onClick={() => onEdit(v)}
                                     className="btn-icon"
